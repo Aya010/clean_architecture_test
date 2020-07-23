@@ -1,0 +1,10 @@
+ZhaoYi 11 0 
+QianEr 22 0 
+SunSan 33 0 
+LiSi 44 0 
+ZhouWu 55 1 
+WuLiu 66 1 
+ZhenQi 77 1 
+WangErmazi 88 1 
+Python 99 0 
+GitHub 101 1 
