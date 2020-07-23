@@ -1,6 +1,7 @@
-
-from 
-
+from methods.reader import Reader
+from methods.txt_reader import TxtReader
+from methods.csv_reader import CsvReader
+from methods.zip_reader import ZipReader
 
 ring_txt = []
 func = Reader("josephus_list2.txt")
