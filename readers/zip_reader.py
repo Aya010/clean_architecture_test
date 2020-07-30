@@ -1,13 +1,13 @@
 from zipfile import ZipFile  # python标准库
 
-from reader import Reader
-from domain.person import Person
+from entities.reader import Reader
+from entities.person import Person
 
 class ZipReader(Reader):  # return a list
     ext = '.zip'
-
-    def read(self, people_list):
-        with ZipFile(self._file_name, 'r') as zip_reader:
+    @classmethod
+    def read(cls, file_path, people_list):
+        with ZipFile(file_path, 'r') as zip_reader:
             file_list = zip_reader.namelist()
             for file_ in file_list:
                 read_file = zip_reader.read(file_).decode('UTF-8')

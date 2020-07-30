@@ -1,12 +1,13 @@
+import os
 
-from reader import Reader
-from domain.person import Person
+from entities.reader import Reader
+from entities.person import Person
 
 class TxtReader(Reader):
     ext = ".txt"
-
-    def read(self, people_list):
-        with open(self._file_name) as txt_file:
+    @classmethod
+    def read(cls, file_path, people_list):
+        with open(file_path) as txt_file:
             for line in txt_file:
                 line_words = line.split(" ")
                 person_ = Person(line_words[0], eval(
@@ -14,8 +15,8 @@ class TxtReader(Reader):
                 people_list.append(person_)
         return people_list
 
-    def __iter__(self):
-        with open(self._file_name) as txt_file:
+    def __iter__(self, file_path):
+        with open(file_path) as txt_file:
             for line in txt_file:
                 line_words = line.split(" ")
                 person_ = Person(line_words[0], eval(
