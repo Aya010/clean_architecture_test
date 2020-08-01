@@ -1,16 +1,16 @@
-# -*- coding: utf-8 -*-
- 
-import os
-import sys
-from PyQt5.QtWidgets import (QComboBox, QWidget, QLabel, QTextBrowser,
-                             QLineEdit, QApplication, QPushButton)
-from entities.josephus import Josephus
-from readers.user_read import UsedReader as Reader
 
-class QtUi(QWidget):
+from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QTextBrowser
+
+
+from test.user_cases.test_qt_ui_response import QtResponse as repo
+
+class QtInit(repo):
     def __init__(self):
         super().__init__()
-
         self.initUI()
 
     def initUI(self):
@@ -20,7 +20,7 @@ class QtUi(QWidget):
         self.run_button()
         self.out_info()
         self.setGeometry(300, 300, 350, 340)
-        self.setWindowTitle('Josephus Ring')
+        self.setWindowTitle('Test Josephus Ring')
         self.show()
 
     def input_start(self):
@@ -67,44 +67,4 @@ class QtUi(QWidget):
         self.info = QTextBrowser(self)
         self.info.move(30,180)
         self.info.resize(290,150)
-
-
-    def click_run(self):
-        ring = []
-        ring = Reader.read(self._path, ring)
-        joseph = Josephus(self._start, self._step, ring)
-        self.info.clear()
-        self.info.append("...Start...")
-        self.info.append("")
-        for i in joseph:
-            self.info.append("Name:" + i.name)
-            self.info.append("Age:" + str(i.age))
-            if i.gender == 0:
-                self.info.append("Gender:Male")
-            else:
-                self.info.append("Gender:Female")
-            self.info.append("")
-        self.info.append("...Success...")
-
-    def selceted_path(self, text):
-        current_path = os.getcwd()
-        self._path = current_path + "/files/" + text
-
-
-    def start_Changed(self, text):
-        if text == "":
-            text = "0"
-        self._start = int(text)
-        #print(self._start)
-        #self.start.adjustSize()
-
-    def step_Changed(self, text):
-        if text == "":
-            text = "1"
-        self._step = int(text)
-
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = QtUi()
-    sys.exit(app.exec_())
+        
