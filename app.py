@@ -1,6 +1,6 @@
 import os
 from entities.josephus import Josephus
-from readers.user_read import UsedReader as Reader
+from user_cases.user_read import UsedReader as Reader
 
 current_path = os.getcwd()
 file_name = "josephus_list2.txt"
